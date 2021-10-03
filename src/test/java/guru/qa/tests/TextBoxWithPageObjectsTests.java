@@ -1,6 +1,6 @@
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+package guru.qa.tests;
+
+import guru.qa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -8,20 +8,20 @@ import java.io.File;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static guru.qa.tests.TestData.firstName;
+import static guru.qa.tests.TestData.lastName;
 
-public class TextBoxTests {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.startMaximized = true;
-    }
 
+public class TextBoxWithPageObjectsTests extends TestBase {
+
+    RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fillFormTest() {
-        open("https://demoqa.com/automation-practice-form");
-        $("#firstName").setValue("Django");
-        $("#lastName").setValue("Free");
+        registrationPage.openPage();
+
+        registrationPage.typeFirstName(firstName);
+        registrationPage.typeLastName(lastName);
         $("#userEmail").setValue("freeman@yandex.ru");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9215121322");
@@ -43,7 +43,7 @@ public class TextBoxTests {
 
         $("#submit").click();
 
-        $("tbody").shouldHave(text("Django Free"),
+        $("tbody").shouldHave(text(firstName + " " + lastName),
                 text("freeman@yandex.ru"),
                 text("Male"),
                 text("9215121322"),
