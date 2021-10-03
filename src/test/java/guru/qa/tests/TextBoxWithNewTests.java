@@ -1,6 +1,7 @@
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+package guru.qa.tests;
+
+import guru.qa.tests.TestBase;
+import guru.qa.tests.TestData;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -10,18 +11,14 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class TextBoxTests {
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.startMaximized = true;
-    }
 
+public class TextBoxWithNewTests extends TestBase {
 
     @Test
     void fillFormTest() {
         open("https://demoqa.com/automation-practice-form");
-        $("#firstName").setValue("Django");
-        $("#lastName").setValue("Free");
+        $("#firstName").setValue(TestData.firstName);
+        $("#lastName").setValue(TestData.lastName);
         $("#userEmail").setValue("freeman@yandex.ru");
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9215121322");
@@ -43,7 +40,7 @@ public class TextBoxTests {
 
         $("#submit").click();
 
-        $("tbody").shouldHave(text("Django Free"),
+        $("tbody").shouldHave(text(TestData.firstName + " " + TestData.lastName),
                 text("freeman@yandex.ru"),
                 text("Male"),
                 text("9215121322"),
