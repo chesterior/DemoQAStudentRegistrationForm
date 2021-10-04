@@ -26,10 +26,7 @@ public class TextBoxWithPageObjectsTests extends TestBase {
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("9215121322");
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("August");
-        $(".react-datepicker__year-select").selectOption("1900");
-        $(".react-datepicker__day.react-datepicker__day--022").click();
+        registrationPage.calendar.setDate("28", "August", "1900");
 
         $("#subjectsInput").setValue("h").pressEnter();
         $("#hobbiesWrapper").$(byText("Reading")).click();

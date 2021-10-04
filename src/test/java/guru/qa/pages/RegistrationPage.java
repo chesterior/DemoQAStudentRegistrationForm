@@ -1,6 +1,7 @@
 package guru.qa.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import guru.qa.pages.components.CalendarComponent;
 import guru.qa.tests.TestData;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,6 +15,8 @@ public class RegistrationPage {
             formTitle = $(".practice-form-wrapper"),
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName");
+
+    public CalendarComponent calendar = new CalendarComponent();
 
     public void openPage() {
         open("https://demoqa.com/automation-practice-form");
