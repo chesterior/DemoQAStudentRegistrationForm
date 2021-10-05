@@ -8,15 +8,18 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static guru.qa.tests.TestData.firstName;
-import static guru.qa.tests.TestData.lastName;
+import static guru.qa.utils.RandomUtils.getRandomString;
 
 
-public class TextBoxWithNewTests extends TestBase {
+public class TextBoxWithRandomUtilsTests extends TestBase {
+
+    String firstName = getRandomString(10),
+            lastName = getRandomString(10);
 
     @Test
     void fillFormTest() {
         open("https://demoqa.com/automation-practice-form");
+
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
         $("#userEmail").setValue("freeman@yandex.ru");
