@@ -5,3 +5,5 @@ build
 gradle
 gradlew
 gradlew.bat
+/src/test/java/guru/qa/docs/
+/src/test/java/guru/qa/utils/
