@@ -44,7 +44,7 @@ public class TextBoxWithPageObjectsTests extends TestBase {
                 text("freeman@yandex.ru"),
                 text("Male"),
                 text("9215121322"),
-                text("22 August,1900"),
+                text("28 August,1900"),
                 text("Hindi"),
                 text("Reading"),
                 text("sports-motocross.jpg"),
